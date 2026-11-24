@@ -84,7 +84,7 @@ flowchart LR
     class Core,Files crays;
 ~~~
 
-Amazon RDS is the Core PostgreSQL store; Neon references in earlier captures describe the previous environment. It it does not replace GraphQL or require every service to use PostgreSQL. Service-specific MySQL/MariaDB remains appropriate where required. S3 has an additional file/object-storage role, without implying that every Nextcloud file or provider database has moved there. These diagrams define boundaries; exact selected versions, source recovery and product acceptance still need their own evidence.
+Amazon RDS is the Core PostgreSQL store; Neon references in earlier captures describe the previous environment. It does not replace GraphQL or require every service to use PostgreSQL. Service-specific MySQL/MariaDB remains appropriate where required. S3 has an additional file/object-storage role, without implying that every Nextcloud file or provider database has moved there. These diagrams define boundaries; exact selected versions, source recovery and product acceptance still need their own evidence.
 
 ## Connections between the layers
 
