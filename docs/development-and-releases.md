@@ -1,10 +1,12 @@
 # Development and releases
 
+**Current operating environment — 24 November 2026:** CRAYS development, builds, testing, previews and server operation use AWS. Vercel, Neon and XXL references in older captures describe historical environments. This hosting status does not claim completion of every product flow. [Current AWS and source guidance](https://github.com/CraysWorld/.github/blob/main/docs/aws-operating-status.md).
+
 This repository is the source checkpoint for shared CRAYS services. It does not deploy products automatically. GitHub Actions is disabled for the newly created repository during consolidation, and no deployment workflow is included.
 
 ## Required sequence
 
-1. Develop the authorized change on a fresh XXL development environment.
+1. Develop the authorized change in the existing designated AWS development environment.
 2. Preserve the complete intended source and required documentation in Git/GitHub under CraysWorld. Keep secrets and live data outside Git.
 3. Check repository workflows, Git provider connections and external deploy triggers before pushing. Use an isolated source branch when preparing a candidate.
 4. Build through the authorized AWS/Amplify process and provide a protected preview.
@@ -12,7 +14,7 @@ This repository is the source checkpoint for shared CRAYS services. It does not 
 6. Obtain the user's concrete release approval.
 7. Publish through the responsible runtime/deployment owner and retain an identified rollback version.
 
-A source import, successful compile, image existence, HTTP response or screenshot does not replace functional and rights acceptance. The AWS migration owner remains responsible for runtime operations and the final migration handoff.
+A source import, successful compile, image existence, HTTP response or screenshot does not replace functional and rights acceptance. The current deployment owner remains responsible for runtime operations and the exact authorised release. AWS migration is not a pending hosting prerequisite.
 
 ## Version records
 

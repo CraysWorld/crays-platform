@@ -1,5 +1,7 @@
 # How CRAYS fits together
 
+**Current operating environment — 24 November 2026:** CRAYS development, builds, testing, previews and server operation use AWS. Vercel, Neon and XXL references in older captures describe historical environments. This hosting status does not claim completion of every product flow. [Current AWS and source guidance](https://github.com/CraysWorld/.github/blob/main/docs/aws-operating-status.md).
+
 CRAYS is building the software connecting members, guests and venue operators across community and hospitality projects. Its architecture brings together personal experiences, membership and operational work. Understanding these responsibilities makes it easier to choose a component and contribute a change without mixing unrelated account, data or deployment boundaries.
 
 ## Three related experiences
@@ -10,9 +12,9 @@ CRAYS is building the software connecting members, guests and venue operators ac
 
 **Work** connects operational workflows to systems such as ERPNext, Plane, Qlo and commerce providers. Work captures and runtime revisions are source versions of this area, rather than separate products.
 
-## Target architecture: APIs, Core/BCC and independent services
+## AWS architecture: APIs, Core/BCC and independent services
 
-**Target architecture · AWS integration in progress.** The following views describe the agreed responsibilities and migration direction. They do not assert completed provider connections, database cutovers or customer acceptance. Core/BCC is the shared layer for identity, accounts, authorization and business rules. Application-specific backends-for-frontends (BFFs) have a separate role.
+**Current hosting: AWS.** The following views describe the agreed responsibilities in the AWS operating model. Hosting completion does not establish completed provider connections or customer acceptance. Core/BCC is the shared layer for identity, accounts, authorization and business rules. Application-specific backends-for-frontends (BFFs) have a separate role.
 
 ### Access and business authority
 
@@ -68,11 +70,11 @@ In plain terms: authorize the action, ask the commerce provider, then account fo
 
 Follow the [Commerce BFF](../services/clubs-commerce-bff/README.md), [commerce guide](services/commerce.md) and [Frappe / ERPNext workflow](services/frappe.md#understand-the-workflow). Their source records retain test-only inventory, disabled live-money movement and deferred ERP dispatch in the cited snapshots. The diagram explains responsibilities, not a claim that those restrictions have been lifted.
 
-### Storage and the PostgreSQL migration
+### Storage on AWS
 
 ~~~mermaid
 flowchart LR
-    Neon["Neon PostgreSQL: prior Core store"] -. "migration direction" .-> RDS["Amazon RDS PostgreSQL: Core store"]
+    RDS["Amazon RDS PostgreSQL: Core store"]
     Core["Core / BCC"] --> RDS
     Services["Independent services"] --> PG["Service-owned PostgreSQL"]
     Services --> MySQL["MySQL / MariaDB where required"]
@@ -82,7 +84,7 @@ flowchart LR
     class Core,Files crays;
 ~~~
 
-RDS replaces Neon PostgreSQL in the Core storage role; it does not replace GraphQL or require every service to use PostgreSQL. Service-specific MySQL/MariaDB remains appropriate where required. S3 has an additional file/object-storage role, without implying that every Nextcloud file or provider database has moved there. These diagrams define boundaries; exact selected versions, source recovery and live migration acceptance need their own evidence.
+Amazon RDS is the Core PostgreSQL store; Neon references in earlier captures describe the previous environment. It it does not replace GraphQL or require every service to use PostgreSQL. Service-specific MySQL/MariaDB remains appropriate where required. S3 has an additional file/object-storage role, without implying that every Nextcloud file or provider database has moved there. These diagrams define boundaries; exact selected versions, source recovery and product acceptance still need their own evidence.
 
 ## Connections between the layers
 
